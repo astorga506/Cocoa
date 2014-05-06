@@ -3,7 +3,6 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-
 package cr.cocoa.domain;
 
 import java.util.LinkedList;
@@ -13,14 +12,14 @@ import java.util.LinkedList;
  * @author Carlos
  */
 public class Cliente {
-    
+
     private int idCliente;
     private String correo;
     private String nombreCliente;
     private String apellidosCliente;
+    private String contrasena;
     private Direccion direccion;
     private LinkedList<Orden> ordenes;
-    private String contrasena;
 
     public Cliente() {
         direccion = new Direccion();
@@ -93,5 +92,5 @@ public class Cliente {
     public void setOrdenes(LinkedList<Orden> ordenes) {
         this.ordenes = ordenes;
     }
-    
+
 }
