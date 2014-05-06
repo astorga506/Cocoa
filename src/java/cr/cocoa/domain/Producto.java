@@ -16,6 +16,7 @@ public class Producto {
     
     private int codProduco;
     private String nombreProducto;
+    private String descripcionProducto;
     private byte[] imagen;
     private String fabricante;
     private String numParte;
@@ -26,14 +27,24 @@ public class Producto {
         categoria = new Categoria();
     }
 
-    public Producto(int codProduco, String nombreProducto, byte[] imagen, String fabricante, String numParte, Date fechaLanzamiento, Categoria categoria) {
+    public Producto(int codProduco, String nombreProducto, String descripcionProducto, byte[] imagen, String fabricante,
+            String numParte, Date fechaLanzamiento, Categoria categoria) {
         this.codProduco = codProduco;
         this.nombreProducto = nombreProducto;
+        this.descripcionProducto = descripcionProducto;
         this.imagen = imagen;
         this.fabricante = fabricante;
         this.numParte = numParte;
         this.fechaLanzamiento = fechaLanzamiento;
         this.categoria = categoria;
+    }
+    
+    public String getDescripcionProducto() {
+        return descripcionProducto;
+    }
+
+    public void setDescripcionProducto(String descripcionProducto) {
+        this.descripcionProducto = descripcionProducto;
     }
 
     public Categoria getCategoria() {

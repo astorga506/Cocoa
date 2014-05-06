@@ -7,7 +7,11 @@ package cr.cocoa.application.action;
 
 import com.opensymphony.xwork2.ActionContext;
 import com.opensymphony.xwork2.ActionSupport;
+import cr.cocoa.data.ClienteData;
+import java.sql.SQLException;
 import java.util.Map;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 /**
  *
@@ -27,13 +31,16 @@ public class SesionAction extends ActionSupport {
     }
 
     public String iniciar() {
-        String val;
-        if (usuario.equals("admin") && contrasena.equals("admin")) {
-            Map sesion = ActionContext.getContext().getSession();
-            sesion.put("logined", "true");
-            val = SUCCESS;
-        } else {
-            val = ERROR;
+        String val = ERROR ;
+        ClienteData cd = new ClienteData();
+        try {
+            if (cd.esValido(usuario, contrasena)) {
+                Map sesion = ActionContext.getContext().getSession();
+                sesion.put("logined", "true");
+                val = SUCCESS;
+            }
+        } catch (SQLException ex) {
+            Logger.getLogger(SesionAction.class.getName()).log(Level.SEVERE, null, ex);
         }
 
         return val;

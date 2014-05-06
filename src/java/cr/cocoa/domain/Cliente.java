@@ -18,23 +18,34 @@ public class Cliente {
     private String correo;
     private String nombreCliente;
     private String apellidosCliente;
-    private  Direccion direccion;
+    private Direccion direccion;
     private LinkedList<Orden> ordenes;
+    private String contrasena;
 
     public Cliente() {
         direccion = new Direccion();
         ordenes = new LinkedList<Orden>();
     }
 
-    public Cliente(int idCliente, String correo, String nombreCliente, String apellidosCliente, Direccion direccion, LinkedList<Orden> ordenes) {
+    public Cliente(int idCliente, String correo, String nombreCliente, String apellidosCliente, Direccion direccion,
+            LinkedList<Orden> ordenes, String contrasena) {
         this.idCliente = idCliente;
         this.correo = correo;
         this.nombreCliente = nombreCliente;
         this.apellidosCliente = apellidosCliente;
         this.direccion = direccion;
         this.ordenes = ordenes;
+        this.contrasena = contrasena;
     }
-    
+
+    public String getContrasena() {
+        return contrasena;
+    }
+
+    public void setContrasena(String contrasena) {
+        this.contrasena = contrasena;
+    }
+
     public int getIdCliente() {
         return idCliente;
     }

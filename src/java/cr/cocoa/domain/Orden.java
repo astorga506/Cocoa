@@ -22,7 +22,7 @@ public class Orden {
     private float montoTotal;
     private String enviaraNombre;
     private String enviaraApellidos;
-    private int numTarjeta;
+    private String numTarjeta;
     private Date fechaExpiracion;
     private String tipoTarjeta;
     private String canton;
@@ -37,7 +37,7 @@ public class Orden {
     }
 
     public Orden(int idOrden, Date fechaOrden, String estadoEnvio, String courier, float montoTotal, 
-            String enviaraNombre, String enviaraApellidos, int numTarjeta, Date fechaExpiracion, String tipoTarjeta, 
+            String enviaraNombre, String enviaraApellidos, String numTarjeta, Date fechaExpiracion, String tipoTarjeta, 
             String canton, String distrito, String provincia, String direccion, String codPostal,
             LinkedList<ItemOrden> itemesOrden) {
         this.idOrden = idOrden;
@@ -122,11 +122,11 @@ public class Orden {
         this.enviaraApellidos = enviaraApellidos;
     }
 
-    public int getNumTarjeta() {
+    public String getNumTarjeta() {
         return numTarjeta;
     }
 
-    public void setNumTarjeta(int numTarjeta) {
+    public void setNumTarjeta(String numTarjeta) {
         this.numTarjeta = numTarjeta;
     }
 

@@ -26,7 +26,8 @@ public class Item {
         proveedor = new Proveedor();
     }
 
-    public Item(int codItem, int cantDisponible, float precioRegular, int descuento, boolean disponible, String notas, Producto producto, Proveedor proveedor) {
+    public Item(int codItem, int cantDisponible, float precioRegular, int descuento, boolean disponible, String notas, 
+            Producto producto, Proveedor proveedor) {
         this.codItem = codItem;
         this.cantDisponible = cantDisponible;
         this.precioRegular = precioRegular;

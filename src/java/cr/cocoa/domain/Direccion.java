@@ -26,7 +26,8 @@ public class Direccion {
         canton = new Canton();        
     }
 
-    public Direccion(int codDireccion, String direccion, String codPostal, int telefono, Provincia provincia, Distrito distrito, Canton canton) {
+    public Direccion(int codDireccion, String direccion, String codPostal, int telefono, Provincia provincia,
+            Distrito distrito, Canton canton) {
         this.codDireccion = codDireccion;
         this.direccion = direccion;
         this.codPostal = codPostal;
