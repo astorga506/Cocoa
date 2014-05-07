@@ -19,7 +19,7 @@ public class ClienteData extends BaseData {
     public ClienteData() {
     }
 
-    public boolean esValido(String contrasena, String email) throws SQLException {
+    public boolean esValido(String email, String contrasena) throws SQLException {
         boolean valido;
         String sqlQuery = "{CALL sp_validar_usuario(?,?,?)}";
         Connection con = this.getConnection();
