@@ -6,6 +6,7 @@
 
 package cr.cocoa.data;
 
+import cr.topgadgets.data.ClienteData;
 import java.sql.SQLException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
