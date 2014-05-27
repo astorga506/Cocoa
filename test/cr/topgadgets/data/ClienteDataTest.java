@@ -4,7 +4,7 @@
  * and open the template in the editor.
  */
 
-package cr.cocoa.data;
+package cr.topgadgets.data;
 
 import cr.topgadgets.data.ClienteData;
 import java.sql.SQLException;

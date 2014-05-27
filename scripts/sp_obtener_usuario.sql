@@ -2,7 +2,7 @@ USE Cocoa
 GO
 CREATE PROCEDURE sp_obtener_usuario
 (
-	 @correo int
+	 @correo varchar(50)
 )
 AS
 BEGIN
@@ -10,8 +10,7 @@ BEGIN
 		 correo, 
 		 nombre_cliente, 
 		 apellidos_cliente, 
-		 cod_direccion, 
-		 contrasena 
+		 cod_direccion
   FROM Cliente 
   WHERE correo = @correo
 END

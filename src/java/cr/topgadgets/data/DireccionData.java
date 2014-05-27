@@ -46,7 +46,7 @@ public class DireccionData extends BaseData {
         String sqlCall = "{CALL sp_obtener_direccion(?)}";
         Connection con = this.getConnection();
         CallableStatement stmt = con.prepareCall(sqlCall);
-        stmt.setInt("codDireccion", codDireccion);
+        stmt.setInt(1, codDireccion);
         ResultSet rs = stmt.executeQuery();
         Direccion direccion = new Direccion();
         if (rs.next()) {

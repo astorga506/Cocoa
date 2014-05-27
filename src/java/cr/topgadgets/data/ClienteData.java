@@ -34,27 +34,27 @@ public class ClienteData extends BaseData {
         con.close();
         return valido;
     }
-    
-    public Cliente getCliente(String email) throws SQLException{
+
+    public Cliente getCliente(String email) throws SQLException {
         Cliente cliente = new Cliente();
         String sqlProc = "{CALL sp_obtener_usuario(?)}";
         Connection con = this.getConnection();
         CallableStatement stmt = con.prepareCall(sqlProc);
         stmt.setString(1, email);
         ResultSet rs = stmt.executeQuery();
-        
-        if(rs.next()){
+
+        if (rs.next()) {
             cliente.setIdCliente(rs.getInt("id_cliente"));
             cliente.setCorreo(rs.getString("correo"));
             cliente.setNombreCliente(rs.getString("nombre_cliente"));
             cliente.setApellidosCliente(rs.getString("apellidos_cliente"));
-            cliente.setDireccion(new DireccionData().getDireccion(rs.getInt("cod_direccion")));                
+            cliente.setDireccion(new DireccionData().getDireccion(rs.getInt("cod_direccion")));
         }
         con.close();
         return cliente;
     }
-    
-    public Cliente insertarCliente(Cliente cliente) throws SQLException{
+
+    public Cliente insertarCliente(Cliente cliente) throws SQLException {
         String sqlCall = "{CALL sp_insertar_cliente(?,?,?,?,?,?)}";
         Connection con = this.getConnection();
         CallableStatement stmt = con.prepareCall(sqlCall);
@@ -63,13 +63,29 @@ public class ClienteData extends BaseData {
         stmt.setString(3, cliente.getNombreCliente());
         stmt.setString(4, cliente.getApellidosCliente());
         stmt.setInt(5, cliente.getDireccion().getCodDireccion());
-        stmt.setString(6, cliente.getContrasena());
-        
+
         stmt.executeUpdate();
-        
+
         cliente.setIdCliente(stmt.getInt(1));
         con.close();
-    
+
+        return cliente;
+    }
+
+    public Cliente editarCliente(Cliente cliente) throws SQLException {
+        String sqlCall = "{CALL sp_editar_cliente(?,?,?,?,?,?)}";
+        Connection con = this.getConnection();
+        CallableStatement stmt = con.prepareCall(sqlCall);
+        stmt.setInt(1, cliente.getIdCliente());
+        stmt.setString(2, cliente.getCorreo());
+        stmt.setString(3, cliente.getNombreCliente());
+        stmt.setString(4, cliente.getApellidosCliente());
+        stmt.setInt(5, cliente.getDireccion().getCodDireccion());
+        stmt.setString(6, cliente.getContrasena());
+
+        stmt.executeUpdate();
+        con.close();
+
         return cliente;
     }
 

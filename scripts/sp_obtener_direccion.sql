@@ -6,8 +6,7 @@ CREATE PROCEDURE sp_obtener_direccion
 )
 AS
 BEGIN
-	SELECT  cod_direccion 
-		  , direccion 
+	SELECT  direccion 
 		  , cod_postal 
 		  , telefono 
 		  , cod_provincia 
