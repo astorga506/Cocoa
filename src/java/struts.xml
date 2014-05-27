@@ -5,16 +5,16 @@
 <struts>
     <!--<include file="example.xml"/> -->
     <!-- Configuration for the default package. -->
-    <package name="default" extends="struts-default">        
+    <package name="default" extends="struts-default">
+        <action name="" class="cr.topgadgets.application.action.SesionAction">
+            <result name="input">index.jsp</result>
+        </action>        
         <action name="iniciarSesion" method="iniciar" class="cr.topgadgets.application.action.SesionAction">
-            <result name="success">bienvenida.jsp</result>
+            <result name="success">index.jsp</result>
             <result name="error">prototipo_login.jsp</result> 
         </action>
-        <action name="trueAction" method="trueCall" class="cr.topgadgets.application.action.MyAction">
-            <result>/truePage.jsp</result>
-        </action>
-        <action name="terminarSesion" method="iniciar" class="cr.topgadgets.application.action.SesionAction">
-            <result name="success">exito.jsp</result>
+        <action name="terminarSesion" method="salir" class="cr.topgadgets.application.action.SesionAction">
+            <result name="success">index.jsp</result>
         </action>
     </package>
 </struts>

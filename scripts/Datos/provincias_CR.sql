@@ -1,17 +1,17 @@
 USE  Cocoa 
 GO
 
-INSERT INTO Provincia( cod_provincia  , nombre_provincia ) VALUES ( '01' , 'San Jose')
+INSERT INTO Provincia( cod_provincia  , nombre_provincia ) VALUES ( '1' , 'San Jose')
 GO
-INSERT INTO Provincia( cod_provincia  , nombre_provincia ) VALUES ( '02' , 'Alajuela')
+INSERT INTO Provincia( cod_provincia  , nombre_provincia ) VALUES ( '2' , 'Alajuela')
 GO
-INSERT INTO Provincia( cod_provincia  , nombre_provincia ) VALUES ( '03' , 'Cartago')
+INSERT INTO Provincia( cod_provincia  , nombre_provincia ) VALUES ( '3' , 'Cartago')
 GO
-INSERT INTO Provincia( cod_provincia  , nombre_provincia ) VALUES ( '04' , 'Heredia')
+INSERT INTO Provincia( cod_provincia  , nombre_provincia ) VALUES ( '4' , 'Heredia')
 GO
-INSERT INTO Provincia( cod_provincia  , nombre_provincia ) VALUES ( '05' , 'Limon')
+INSERT INTO Provincia( cod_provincia  , nombre_provincia ) VALUES ( '5' , 'Limon')
 GO
-INSERT INTO Provincia( cod_provincia  , nombre_provincia ) VALUES ( '06' , 'Guanacaste')
+INSERT INTO Provincia( cod_provincia  , nombre_provincia ) VALUES ( '6' , 'Guanacaste')
 GO
-INSERT INTO Provincia( cod_provincia  , nombre_provincia ) VALUES ( '07' , 'Puntarenas')
+INSERT INTO Provincia( cod_provincia  , nombre_provincia ) VALUES ( '7' , 'Puntarenas')
 GO

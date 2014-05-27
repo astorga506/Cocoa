@@ -5,7 +5,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
-        <title>Ejemplo vista principal Cliente</title>
+        <title>top gadgets | Electronics Store</title>
         <link rel="stylesheet" href="css/style.css" type="text/css" charset="utf-8" />	
     </head>
     <body>
@@ -17,7 +17,7 @@
                             <ul>
                                 <li><a href="lista_productos.jsp">PRODUCTOS</a></li>
                                 <li><a>CARRITO</a></li>
-                                <li><a href="Registro.jsp">REGISTRARSE</a></li>
+                                <s:if test="%{#session.logined == false}"><li><a href="registrarUsuario.jsp">REGISTRARSE</a></li></s:if>
                             </ul>
                         </div>
                     </div>
@@ -37,29 +37,35 @@
                 <div id="head-2"></div>
                 <div id="login">
                     <div id="login-bot">
-                        <div id="login-box">
-                            <h2 class="login"><em>Usuario</em>login</h2>
-                            <form action="">
-                                <div id="login-username">
-                                    <div><s:textfield name="usuario" label="Usuario"/></div>
-                                    <div><s:password name="contrasena" label="Contraseña" id="pass"/></div>
-                                </div>
-                                <div id="login-button">
-                                    <s:submit type="image" src="imagenes/btn_login.gif"/>                                    
-                                </div>
-                                <div class="clear">
-                                    <div class="reg">
-                                        Sin cuenta? <a href="Registro.jsp">Registrese gratis</a>
+                        <s:if test="%{#session.logined == false}">
+                            <div id="login-box">
+                                <h2 class="login"><em>Usuario</em>login</h2>
+                                <s:form action="iniciarSesion" method="post">
+                                    <div id="login-username">
+                                        <div><s:textfield name="usuario" label="Usuario"/></div>
+                                        <div><s:password name="contrasena" label="Contraseña"/></div>
                                     </div>
-                                </div>
-                            </form>
-                        </div>
-                        <div id="login-welcome">
-                            <div>
-                                <h2>Bienvenido</h2>
-
+                                    <div id="login-button">
+                                        <s:submit type="image" src="imagenes/btn_login.gif"/>                                    
+                                    </div>
+                                    <div class="clear">
+                                        <div class="reg">
+                                            Sin cuenta? <a href="registrarUsuario.jsp">Registrese gratis</a>
+                                        </div>
+                                    </div>
+                                </s:form>
                             </div>
-                        </div>
+                        </s:if>
+                        <s:else>
+                            <div id="login-welcome">
+                                <div>
+                                    <h2>Bienvenido <s:property value="#session.user.nombreCliente"/></h2> 
+                                    <s:form action="terminarSesion" method="post">
+                                        <s:submit type="image" src="imagenes/btn_login.gif"/>
+                                    </s:form>
+                                </div>
+                            </div>
+                        </s:else>
                         <div class="clear"></div>
                     </div>
                 </div>

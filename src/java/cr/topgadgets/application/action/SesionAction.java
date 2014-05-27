@@ -5,38 +5,40 @@
  */
 package cr.topgadgets.application.action;
 
-import com.opensymphony.xwork2.ActionContext;
 import com.opensymphony.xwork2.ActionSupport;
-import cr.topgadgets.data.ClienteData;
+import com.opensymphony.xwork2.Preparable;
+import cr.topgadgets.business.ClienteBusiness;
+import cr.topgadgets.domain.Cliente;
 import java.sql.SQLException;
 import java.util.Map;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import org.apache.struts2.interceptor.SessionAware;
 
 /**
  *
  * @author Carlos
  */
-public class SesionAction extends ActionSupport {
+public class SesionAction extends ActionSupport implements SessionAware, Preparable{
 
     private String usuario;
     private String contrasena;
-
-    public SesionAction() {
-    }
+    private Cliente cliente;
+    private Map<String,Object> map;
 
     @Override
     public String execute() throws Exception {
-        throw new UnsupportedOperationException("Not supported yet.");
+        return INPUT;
     }
 
     public String iniciar() {
         String val = ERROR ;
-        ClienteData cd = new ClienteData();
+        ClienteBusiness cb = new ClienteBusiness();
         try {
-            if (cd.esValido(usuario, contrasena)) {
-                Map sesion = ActionContext.getContext().getSession();
-                sesion.put("logined", "true");
+            if (cb.esValido(usuario, contrasena)) {
+                map.put("logined", true);
+                cliente = cb.getCliente(usuario);
+                map.put("user", cliente);
                 val = SUCCESS;
             }
         } catch (SQLException ex) {
@@ -47,8 +49,8 @@ public class SesionAction extends ActionSupport {
     }
 
     public String salir() {
-        Map session = ActionContext.getContext().getSession();
-        session.remove("logined");
+        map.remove("user");
+        map.put("logined", false);
         return SUCCESS;
     }
 
@@ -66,6 +68,17 @@ public class SesionAction extends ActionSupport {
 
     public void setContrasena(String contrasena) {
         this.contrasena = contrasena;
+    }
+
+    @Override
+    public void setSession(Map<String, Object> map) {
+        this.map = map;
+    }
+
+    @Override
+    public void prepare() throws Exception {
+        cliente = new Cliente();
+        map.put("logined", false);
     }
 
 }
