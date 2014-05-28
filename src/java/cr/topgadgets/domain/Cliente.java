@@ -20,21 +20,23 @@ public class Cliente {
     private String contrasena;
     private Direccion direccion;
     private LinkedList<Orden> ordenes;
+    private LinkedList<ItemCarrito> carrito;
 
     public Cliente() {
         direccion = new Direccion();
         ordenes = new LinkedList<Orden>();
+        carrito = new LinkedList<ItemCarrito>();
     }
 
-    public Cliente(int idCliente, String correo, String nombreCliente, String apellidosCliente, Direccion direccion,
-            LinkedList<Orden> ordenes, String contrasena) {
+    public Cliente(int idCliente, String correo, String nombreCliente, String apellidosCliente, String contrasena, Direccion direccion, LinkedList<Orden> ordenes, LinkedList<ItemCarrito> carrito) {
         this.idCliente = idCliente;
         this.correo = correo;
         this.nombreCliente = nombreCliente;
         this.apellidosCliente = apellidosCliente;
+        this.contrasena = contrasena;
         this.direccion = direccion;
         this.ordenes = ordenes;
-        this.contrasena = contrasena;
+        this.carrito = carrito;
     }
 
     public String getContrasena() {
@@ -93,4 +95,11 @@ public class Cliente {
         this.ordenes = ordenes;
     }
 
+    public LinkedList<ItemCarrito> getCarrito() {
+        return carrito;
+    }
+
+    public void setCarrito(LinkedList<ItemCarrito> carrito) {
+        this.carrito = carrito;
+    }
 }

@@ -1,9 +1,3 @@
-<%-- 
-    Document   : listado_productos
-    Created on : 14/05/2014, 07:41:53 PM
-    Author     : Mauro
---%>
-
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <%@taglib prefix="s" uri="/struts-tags"%>
 <!DOCTYPE html>
@@ -30,27 +24,18 @@
                     <div id="login-bot">
                         <div id="login-box">
                             <h2 class="login"><em>Usuario</em>Registro</h2>
-                            <s:form action="registrarUsuario" method="post"> 
+                            <s:form action="iniciarSesion" method="post"> 
                                 <div id="login-username">
-                                    <div><s:textfield name="correo" key="registro.formulario.correo"/></div>
-                                    <div><s:textfield name="nombreCliente" label="Nombre"/></div>
-                                    <div><s:textfield name="apellidosCliente" label="Apellidos"/></div>  
-                                    <div><s:password name="contrasena" label="Contraseña"/></div>
-                                    <div><s:password name="contrasenaConf" label="Confirmar Contraseña"/></div>							
+                                  						
                                 </div>
                                 <div id="login-button">
-                                    <s:submit type="image" src="imagenes/btn_login.gif"/>
+                                    <input type="image" src="imagenes/btn_login.gif" name="l" value="h" id="l" />
                                 </div>
                             </s:form>
                         </div>
                         <div class="clear"></div>
                     </div>
-                </div>  
-                <div id="footer">
-                    <div id="footloose"><span class="logo"><span class="top"><s:text name="global.nombre.top"/></span><span class="gadgets"><s:text name="global.nombre.gadgets"/></span></span></div>
-                    <p><a href="http://www.freewebsitetemplates.com"><s:text name="global.mensaje.privacidad"/></a> <strong>&nbsp;:&nbsp;</strong> <a href="http://www.freewebsitetemplates.com"><s:text name="global.mensaje.terminos"/></a> <br />
-                        &copy; <s:text name="global.mensaje.copyright"/></p>
-                </div>	
+                </div>
             </div>
         </div>
     </body>

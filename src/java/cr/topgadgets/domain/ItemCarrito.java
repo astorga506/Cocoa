@@ -10,19 +10,25 @@ package cr.topgadgets.domain;
  *
  * @author Carlos
  */
-public class ItemOrden {
+public class ItemCarrito {
     
-    private int cantidad;
-    private float precioUnd;
     private Producto producto;
+    private int cantidad;
 
-    public ItemOrden() {
+    public ItemCarrito() {
         producto = new Producto();
     }
 
-    public ItemOrden(int cantidad, float precioUnd, Producto producto) {
+    public ItemCarrito(Producto producto, int cantidad) {
+        this.producto = producto;
         this.cantidad = cantidad;
-        this.precioUnd = precioUnd;
+    }
+
+    public Producto getProducto() {
+        return producto;
+    }
+
+    public void setProducto(Producto producto) {
         this.producto = producto;
     }
 
@@ -33,21 +39,5 @@ public class ItemOrden {
     public void setCantidad(int cantidad) {
         this.cantidad = cantidad;
     }
-
-    public float getPrecioUnd() {
-        return precioUnd;
-    }
-
-    public void setPrecioUnd(float precioUnd) {
-        this.precioUnd = precioUnd;
-    }
-
-    public Producto getProducto() {
-        return producto;
-    }
-
-    public void setProducto(Producto producto) {
-        this.producto = producto;
-    }
-        
+    
 }

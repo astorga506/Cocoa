@@ -55,14 +55,14 @@ public class ClienteData extends BaseData {
     }
 
     public Cliente insertarCliente(Cliente cliente) throws SQLException {
-        String sqlCall = "{CALL sp_insertar_cliente(?,?,?,?,?,?)}";
+        String sqlCall = "{CALL sp_insertar_cliente(?,?,?,?,?)}";
         Connection con = this.getConnection();
         CallableStatement stmt = con.prepareCall(sqlCall);
         stmt.registerOutParameter(1, Types.INTEGER);
         stmt.setString(2, cliente.getCorreo());
         stmt.setString(3, cliente.getNombreCliente());
         stmt.setString(4, cliente.getApellidosCliente());
-        stmt.setInt(5, cliente.getDireccion().getCodDireccion());
+        stmt.setString(5, cliente.getContrasena());
 
         stmt.executeUpdate();
 

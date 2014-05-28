@@ -6,7 +6,7 @@
 
 package cr.topgadgets.data;
 
-import cr.topgadgets.data.ClienteData;
+import cr.topgadgets.domain.Cliente;
 import java.sql.SQLException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -39,6 +39,7 @@ public class ClienteDataTest {
      @Test
      public void test() {
         try {
+                        
             System.out.println(cd.esValido("carlos.astorgagomez@ucr.ac.cr", "lenguajes"));
             
         } catch (SQLException ex) {

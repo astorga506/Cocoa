@@ -16,5 +16,15 @@
         <action name="terminarSesion" method="salir" class="cr.topgadgets.application.action.SesionAction">
             <result name="success">index.jsp</result>
         </action>
+        <action name="registro" class="cr.topgadgets.application.action.RegistrarAction">
+            <interceptor-ref name="defaultStack">
+                <param name="validation.excludemethods">execute</param>                
+            </interceptor-ref>
+            <result name="input">registrarUsuario.jsp</result>
+        </action>        
+        <action name="registrarUsuario" method="registrar" class="cr.topgadgets.application.action.RegistrarAction">
+            <result name="success">exito.jsp</result>
+            <result name="input">registrarUsuario.jsp</result>
+        </action>        
     </package>
 </struts>
