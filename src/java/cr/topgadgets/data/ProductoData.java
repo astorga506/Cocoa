@@ -12,6 +12,7 @@ import java.sql.CallableStatement;
 import java.sql.Connection;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.sql.Types;
 import java.util.LinkedList;
 
 /**
@@ -21,6 +22,30 @@ import java.util.LinkedList;
 public class ProductoData extends BaseData {
 
     public ProductoData() {
+    }
+
+    public Producto insertarProducto(Producto producto) throws SQLException {
+        String sqlCall = "{CALL sp_insertar_producto(?,?,?,?,?,?,?,?,?,?)}";
+        Connection con = this.getConnection();
+        CallableStatement stmt = con.prepareCall(sqlCall);
+
+        stmt.registerOutParameter(1, Types.INTEGER);
+        stmt.setString(2,producto.getNombreProducto());
+        stmt.setString(3,producto.getDescripcionProducto());
+        stmt.setBytes(4,producto.getImagen());
+        stmt.setString(5,producto.getFabricante());
+        stmt.setInt(6,producto.getCategoria().getCodCategoria());
+        stmt.setInt(7,producto.getCantDisponible());
+        stmt.setDouble(8,producto.getPrecioRegular());
+        stmt.setInt(9,producto.getDescuento());
+        stmt.setInt(10,producto.getProveedor().getCodProveedor());
+
+        stmt.execute();
+        
+        producto.setCodProducto(stmt.getInt(1));
+
+        con.close();
+        return producto;
     }
 
     public Producto getProducto(int codProducto) throws SQLException {
@@ -37,15 +62,11 @@ public class ProductoData extends BaseData {
             producto.setDescripcionProducto(rs.getString("descripcion_producto"));
             producto.setImagen(rs.getBytes("imagen"));
             producto.setFabricante(rs.getString("fabricante"));
-            producto.setNumParte(rs.getString("num_parte"));
-            producto.setFechaLanzamiento(rs.getDate("fecha_lanzamiento"));
             producto.setFechaAgregado(rs.getDate("fecha_agregado"));
             producto.setCategoria(this.getCategoria(rs.getInt("cod_categoria")));
-            producto.setCantDisponible(rs.getInt("can_disponible"));
+            producto.setCantDisponible(rs.getInt("cant_disponible"));
             producto.setPrecioRegular(rs.getFloat("precio_regular"));
             producto.setDescuento(rs.getInt("descuento"));
-            producto.setDisponible(rs.getBoolean("disponible"));
-            producto.setNotas(rs.getString("notas"));
             producto.setProveedor(this.getProveedor(rs.getInt("cod_proveedor")));
 
         }
@@ -55,27 +76,23 @@ public class ProductoData extends BaseData {
 
     public LinkedList<Producto> getProductos() throws SQLException {
         LinkedList<Producto> productos = new LinkedList<Producto>();
-        String sqlCall = "{CALL sp_obtener_producto}";
+        String sqlCall = "{CALL sp_obtener_productos}";
         Connection con = this.getConnection();
         CallableStatement stmt = con.prepareCall(sqlCall);
         ResultSet rs = stmt.executeQuery();
 
-        if (rs.next()) {
+        while (rs.next()) {
             Producto producto = new Producto();
             producto.setCodProducto(rs.getInt("cod_producto"));
             producto.setNombreProducto(rs.getString("nombre_producto"));
             producto.setDescripcionProducto(rs.getString("descripcion_producto"));
             producto.setImagen(rs.getBytes("imagen"));
             producto.setFabricante(rs.getString("fabricante"));
-            producto.setNumParte(rs.getString("num_parte"));
-            producto.setFechaLanzamiento(rs.getDate("fecha_lanzamiento"));
             producto.setFechaAgregado(rs.getDate("fecha_agregado"));
             producto.setCategoria(this.getCategoria(rs.getInt("cod_categoria")));
-            producto.setCantDisponible(rs.getInt("can_disponible"));
+            producto.setCantDisponible(rs.getInt("cant_disponible"));
             producto.setPrecioRegular(rs.getFloat("precio_regular"));
             producto.setDescuento(rs.getInt("descuento"));
-            producto.setDisponible(rs.getBoolean("disponible"));
-            producto.setNotas(rs.getString("notas"));
             producto.setProveedor(this.getProveedor(rs.getInt("cod_proveedor")));
             productos.add(producto);
         }
@@ -91,22 +108,18 @@ public class ProductoData extends BaseData {
         stmt.setInt(1, codCategoria);
         ResultSet rs = stmt.executeQuery();
 
-        if (rs.next()) {
+        while (rs.next()) {
             Producto producto = new Producto();
             producto.setCodProducto(rs.getInt("cod_producto"));
             producto.setNombreProducto(rs.getString("nombre_producto"));
             producto.setDescripcionProducto(rs.getString("descripcion_producto"));
             producto.setImagen(rs.getBytes("imagen"));
             producto.setFabricante(rs.getString("fabricante"));
-            producto.setNumParte(rs.getString("num_parte"));
-            producto.setFechaLanzamiento(rs.getDate("fecha_lanzamiento"));
             producto.setFechaAgregado(rs.getDate("fecha_agregado"));
             producto.setCategoria(this.getCategoria(rs.getInt("cod_categoria")));
-            producto.setCantDisponible(rs.getInt("can_disponible"));
+            producto.setCantDisponible(rs.getInt("cant_disponible"));
             producto.setPrecioRegular(rs.getFloat("precio_regular"));
             producto.setDescuento(rs.getInt("descuento"));
-            producto.setDisponible(rs.getBoolean("disponible"));
-            producto.setNotas(rs.getString("notas"));
             producto.setProveedor(this.getProveedor(rs.getInt("cod_proveedor")));
             productos.add(producto);
         }
@@ -122,22 +135,18 @@ public class ProductoData extends BaseData {
         stmt.setString(1, nombreProducto);
         ResultSet rs = stmt.executeQuery();
 
-        if (rs.next()) {
+        while (rs.next()) {
             Producto producto = new Producto();
             producto.setCodProducto(rs.getInt("cod_producto"));
             producto.setNombreProducto(rs.getString("nombre_producto"));
             producto.setDescripcionProducto(rs.getString("descripcion_producto"));
             producto.setImagen(rs.getBytes("imagen"));
             producto.setFabricante(rs.getString("fabricante"));
-            producto.setNumParte(rs.getString("num_parte"));
-            producto.setFechaLanzamiento(rs.getDate("fecha_lanzamiento"));
             producto.setFechaAgregado(rs.getDate("fecha_agregado"));
             producto.setCategoria(this.getCategoria(rs.getInt("cod_categoria")));
-            producto.setCantDisponible(rs.getInt("can_disponible"));
+            producto.setCantDisponible(rs.getInt("cant_disponible"));
             producto.setPrecioRegular(rs.getFloat("precio_regular"));
             producto.setDescuento(rs.getInt("descuento"));
-            producto.setDisponible(rs.getBoolean("disponible"));
-            producto.setNotas(rs.getString("notas"));
             producto.setProveedor(this.getProveedor(rs.getInt("cod_proveedor")));
             productos.add(producto);
         }
@@ -153,22 +162,18 @@ public class ProductoData extends BaseData {
         stmt.setString(1, palabraClave);
         ResultSet rs = stmt.executeQuery();
 
-        if (rs.next()) {
+        while (rs.next()) {
             Producto producto = new Producto();
             producto.setCodProducto(rs.getInt("cod_producto"));
             producto.setNombreProducto(rs.getString("nombre_producto"));
             producto.setDescripcionProducto(rs.getString("descripcion_producto"));
             producto.setImagen(rs.getBytes("imagen"));
             producto.setFabricante(rs.getString("fabricante"));
-            producto.setNumParte(rs.getString("num_parte"));
-            producto.setFechaLanzamiento(rs.getDate("fecha_lanzamiento"));
             producto.setFechaAgregado(rs.getDate("fecha_agregado"));
             producto.setCategoria(this.getCategoria(rs.getInt("cod_categoria")));
-            producto.setCantDisponible(rs.getInt("can_disponible"));
+            producto.setCantDisponible(rs.getInt("cant_disponible"));
             producto.setPrecioRegular(rs.getFloat("precio_regular"));
             producto.setDescuento(rs.getInt("descuento"));
-            producto.setDisponible(rs.getBoolean("disponible"));
-            producto.setNotas(rs.getString("notas"));
             producto.setProveedor(this.getProveedor(rs.getInt("cod_proveedor")));
             productos.add(producto);
         }
@@ -183,22 +188,18 @@ public class ProductoData extends BaseData {
         CallableStatement stmt = con.prepareCall(sqlCall);
         ResultSet rs = stmt.executeQuery();
 
-        if (rs.next()) {
+        while (rs.next()) {
             Producto producto = new Producto();
             producto.setCodProducto(rs.getInt("cod_producto"));
             producto.setNombreProducto(rs.getString("nombre_producto"));
             producto.setDescripcionProducto(rs.getString("descripcion_producto"));
             producto.setImagen(rs.getBytes("imagen"));
             producto.setFabricante(rs.getString("fabricante"));
-            producto.setNumParte(rs.getString("num_parte"));
-            producto.setFechaLanzamiento(rs.getDate("fecha_lanzamiento"));
             producto.setFechaAgregado(rs.getDate("fecha_agregado"));
             producto.setCategoria(this.getCategoria(rs.getInt("cod_categoria")));
-            producto.setCantDisponible(rs.getInt("can_disponible"));
+            producto.setCantDisponible(rs.getInt("cant_disponible"));
             producto.setPrecioRegular(rs.getFloat("precio_regular"));
             producto.setDescuento(rs.getInt("descuento"));
-            producto.setDisponible(rs.getBoolean("disponible"));
-            producto.setNotas(rs.getString("notas"));
             producto.setProveedor(this.getProveedor(rs.getInt("cod_proveedor")));
             productos.add(producto);
         }
@@ -206,11 +207,35 @@ public class ProductoData extends BaseData {
         return productos;
     }
 
-    public Categoria getCategoria(int codCategoria) {
-        return null;
+    public Categoria getCategoria(int codCategoria) throws SQLException {
+        Categoria categoria = new Categoria();
+        String sqlCall = "{CALL sp_obtener_categoria(?)}";
+        Connection con = this.getConnection();
+        CallableStatement stmt = con.prepareCall(sqlCall);
+        stmt.setInt(1, codCategoria);
+        ResultSet rs = stmt.executeQuery();
+
+        if (rs.next()) {
+            categoria.setCodCategoria(rs.getInt("cod_categoria"));
+            categoria.setNombreCategoria(rs.getString("nombre_categoria"));
+        }
+        con.close();
+        return categoria;
     }
 
-    public Proveedor getProveedor(int codProveedor) {
-        return null;
+    public Proveedor getProveedor(int codProveedor) throws SQLException {
+        Proveedor proveedor = new Proveedor();
+        String sqlCall = "{CALL sp_obtener_proveedor(?)}";
+        Connection con = this.getConnection();
+        CallableStatement stmt = con.prepareCall(sqlCall);
+        stmt.setInt(1, codProveedor);
+        ResultSet rs = stmt.executeQuery();
+        if (rs.next()) {
+            proveedor.setCodProveedor(rs.getInt("cod_proveedor"));
+            proveedor.setNombreProveedor(rs.getString("nombre_proveedor"));
+            proveedor.setDireccion(new DireccionData().getDireccion(rs.getInt("cod_direccion")));
+        }
+        con.close();
+        return proveedor;
     }
 }

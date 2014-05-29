@@ -4,7 +4,7 @@
  * and open the template in the editor.
  */
 
-package cr.topgadgets.data;
+package cr.topgadgets.domain;
 
 import cr.topgadgets.domain.Producto;
 import org.junit.After;
@@ -31,6 +31,6 @@ public class ProductoTest {
      @Test
      public void hello() {
          Producto producto = new Producto();
-         System.out.println(producto.getFechaLanzamiento());
+         System.out.println(producto.getFechaAgregado());
      }
 }

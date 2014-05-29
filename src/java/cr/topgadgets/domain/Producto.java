@@ -19,20 +19,15 @@ public class Producto {
     private String descripcionProducto;
     private byte[] imagen;
     private String fabricante;
-    private String numParte;
-    private Date fechaLanzamiento;
     private Date fechaAgregado;
     private Categoria categoria;
     private int cantDisponible;
     private float precioRegular;
     private int descuento;
-    private boolean disponible;
-    private String notas;
     private Proveedor proveedor;
 
     public Producto() {
         Calendar calendar = Calendar.getInstance();
-        fechaLanzamiento = new Date(calendar.getTime().getTime());
         fechaAgregado = new Date(calendar.getTime().getTime());
         categoria = new Categoria();
         proveedor = new Proveedor();
@@ -41,23 +36,18 @@ public class Producto {
     }
 
     public Producto(int codProducto, String nombreProducto, String descripcionProducto, byte[] imagen,
-            String fabricante, String numParte, Date fechaLanzamiento, Date fechaAgregado, Categoria categoria,
-            int cantDisponible, float precioRegular, int descuento, boolean disponible, String notas,
-            Proveedor proveedor) {
+            String fabricante, Date fechaAgregado, Categoria categoria, int cantDisponible, float precioRegular,
+            int descuento, Proveedor proveedor) {
         this.codProducto = codProducto;
         this.nombreProducto = nombreProducto;
         this.descripcionProducto = descripcionProducto;
         this.imagen = imagen;
         this.fabricante = fabricante;
-        this.numParte = numParte;
-        this.fechaLanzamiento = fechaLanzamiento;
         this.fechaAgregado = fechaAgregado;
         this.categoria = categoria;
         this.cantDisponible = cantDisponible;
         this.precioRegular = precioRegular;
         this.descuento = descuento;
-        this.disponible = disponible;
-        this.notas = notas;
         this.proveedor = proveedor;
     }
 
@@ -109,22 +99,6 @@ public class Producto {
         this.fabricante = fabricante;
     }
 
-    public String getNumParte() {
-        return numParte;
-    }
-
-    public void setNumParte(String numParte) {
-        this.numParte = numParte;
-    }
-
-    public Date getFechaLanzamiento() {
-        return fechaLanzamiento;
-    }
-
-    public void setFechaLanzamiento(Date fechaLanzamiento) {
-        this.fechaLanzamiento = fechaLanzamiento;
-    }
-        
     public Date getFechaAgregado() {
         return fechaAgregado;
     }
@@ -155,22 +129,6 @@ public class Producto {
 
     public void setDescuento(int descuento) {
         this.descuento = descuento;
-    }
-
-    public boolean isDisponible() {
-        return disponible;
-    }
-
-    public void setDisponible(boolean disponible) {
-        this.disponible = disponible;
-    }
-
-    public String getNotas() {
-        return notas;
-    }
-
-    public void setNotas(String notas) {
-        this.notas = notas;
     }
 
     public Proveedor getProveedor() {
