@@ -6,10 +6,7 @@
     <!--<include file="example.xml"/> -->
     <!-- Configuration for the default package. -->
     <package name="default" extends="struts-default">
-        <action name="" class="cr.topgadgets.application.action.IndexAction">
-            <result name="input">index.jsp</result>
-        </action>        
-        <action name="sesion" class="cr.topgadgets.application.action.SesionAction">
+        <action name="" class="cr.topgadgets.application.action.SesionAction">
             <result name="input">index.jsp</result>
         </action>        
         <action name="iniciarSesion" method="iniciar" class="cr.topgadgets.application.action.SesionAction">
