@@ -29,7 +29,7 @@
                                   						
                                 </div>
                                 <div id="login-button">
-                                    <input type="image" src="imagenes/btn_login.gif" name="l" value="h" id="l" />
+                                    <input type="image" src="img/btn_login.gif" name="l" value="h" id="l" />
                                 </div>
                             </s:form>
                         </div>

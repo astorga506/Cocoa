@@ -46,19 +46,26 @@
                             <s:iterator value="productos" var="productoActual">
                                 <div class="item">
                                     <img src="<s:url action="mostrarImagen">
-                                              <s:param name="codProducto" value="#productoActual.codProducto"/>
-                                          </s:url>" width="91" height="105" class="left" />  
+                                             <s:param name="codProducto" value="#productoActual.codProducto"/>
+                                         </s:url>" width="91" height="105" class="left" />  
                                     <h3><s:property value="#productoActual.nombreProducto"/></h3>
                                     <div><s:url action="verProducto" var="url">
-                                              <s:param name="codProducto" value="#productoActual.codProducto"/>
-                                          </s:url>
-                                        <a href="<s:property value="#url"/>" class="details">detalles</a><br><br><a href="http://www.freewebsitetemplates.com" class="details">agregar a carrito</a></div>
+                                            <s:param name="codProducto" value="#productoActual.codProducto"/>
+                                        </s:url>
+                                        <a href="<s:property value="#url"/>" class="details"><s:text name="global.mensaje.detalles"/></a>
+                                        <br><br>
+                                        <a href="http://www.freewebsitetemplates.com" class="details"><s:text name="global.mensaje.agregar_carrito"/></a>
+                                    </div>
                                     <div class="divider"></div>
                                 </div>
                             </s:iterator>
                             <div class="clear"></div>
                         </div>
-
+                        <div id="footer">
+                            <div id="footloose"><span class="logo"><span class="top"><s:text name="global.nombre.top"/></span><span class="gadgets"><s:text name="global.nombre.gadgets"/></span></span></div>
+                            <p><a href="http://www.freewebsitetemplates.com"><s:text name="global.mensaje.privacidad"/></a> <strong>&nbsp;:&nbsp;</strong> <a href="http://www.freewebsitetemplates.com"><s:text name="global.mensaje.terminos"/></a> <br />
+                                &copy; <s:text name="global.mensaje.copyright"/></p>
+                        </div>	
                     </div>
                 </div>
             </div>

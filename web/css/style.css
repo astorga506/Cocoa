@@ -34,10 +34,10 @@ form {
 	padding: 0px;
 }
 body {
-	background:url(../imagenes/bg.jpg);
+	background:url(../img/bg.jpg);
 }
 #outer {
-	background: url(../imagenes/bg_top.jpg) repeat-x;
+	background: url(../img/bg_top.jpg) repeat-x;
 	min-height: 757px;
 	padding: 67px 0px;
 	text-align: center;
@@ -49,14 +49,14 @@ body {
 	width: 563px;
 }
 #nav {
-  background: url(../imagenes/nav_bg.gif) repeat-x;
+  background: url(../img/nav_bg.gif) repeat-x;
 }
 #nav-left {
-  background: url(../imagenes/nav_left.gif) no-repeat;
+  background: url(../img/nav_left.gif) no-repeat;
   width: 100%;
 }
 #nav-right {
-  background: top right url(../imagenes/nav_right.gif) no-repeat;
+  background: top right url(../img/nav_right.gif) no-repeat;
   height: 33px;
 }
 #nav a, #navb a {
@@ -77,7 +77,7 @@ body {
 #head {
 	position: relative;
 	height: 157px;
-	background: url(../imagenes/head_bg.gif);
+	background: url(../img/head_bg.gif);
 }
 #head h1 {
 	margin: 0px;
@@ -114,7 +114,7 @@ body {
 	left: -16px;
 	width: 16px;
 	height: 200px;
-	background: url(../imagenes/head_left.gif) no-repeat;
+	background: url(../img/head_left.gif) no-repeat;
 }
 #head-right {
 	position: absolute;
@@ -122,7 +122,7 @@ body {
 	left: 562px;
 	width: 16px;
 	height: 200px;
-	background: url(../imagenes/head_right.gif) no-repeat;
+	background: url(../img/head_right.gif) no-repeat;
 }
 #navb {
 	position: absolute;
@@ -138,7 +138,7 @@ body {
   float: left;
   width: 76px;
   height: 19px;
-  background: url(../imagenes/small_nav_tab.gif) no-repeat;
+  background: url(../img/small_nav_tab.gif) no-repeat;
   margin: 0px;
   padding: 0px;
   list-style: none;
@@ -154,19 +154,19 @@ body {
 	right: 0px;
 	width: 325px;
 	height: 157px;
-	//background: url(../imagenes/head_1.jpg) no-repeat;			
+	//background: url(../img/head_1.jpg) no-repeat;			
 }
 #head-2 {
 	height: 190px;
-	background: url(../imagenes/computacion.jpg) no-repeat;			
+	background: url(../img/computacion.jpg) no-repeat;			
 }
 #login {
-	background: url(../imagenes/login_bg.jpg) repeat-y;
+	background: url(../img/login_bg.jpg) repeat-y;
 	font-weight: bold;
 	color: #E1E1D5;
 }
 #login-bot {
-	background: bottom url(../imagenes/login_bot.jpg) no-repeat;
+	background: bottom url(../img/login_bot.jpg) no-repeat;
 	padding: 6px 0px 19px 0px;
 }
 #login-box {
@@ -189,7 +189,7 @@ body {
 	margin-bottom: 3px;
   color: #303228;
   font: 18px "arial narrow", arial, sans-serif;
-  background: url(../imagenes/h_login.gif) no-repeat;
+  background: url(../img/h_login.gif) no-repeat;
 }
 #login-box h2 em {
   font-style: normal;
@@ -237,16 +237,16 @@ body {
   margin-top: 0px;
 }
 #body {
-	background: url(../imagenes/body_bg.gif) repeat-y;
+	background: url(../img/body_bg.gif) repeat-y;
 }
 #body-bot {
-	background: bottom url(../imagenes/body_bot.gif) no-repeat;
+	background: bottom url(../img/body_bot.gif) no-repeat;
 	padding-bottom: 20px;
 }
 #body h2 {
 	margin: 0px;
 	padding: 0px;
-	background: url(../imagenes/body_top.gif) no-repeat;
+	background: url(../img/body_top.gif) no-repeat;
 	height: 60px;
 	color: #303228;
   font: normal 18px "arial narrow", arial, sans-serif;
@@ -261,7 +261,7 @@ body {
   font-weight: normal;
 }
 #footer {
-	background: url(../imagenes/footer_bg.gif);
+	background: url(../img/footer_bg.gif);
 	margin: 0px 1px;
 	text-align: right;
 	padding: 42px 26px 30px 0px;
@@ -328,7 +328,7 @@ body {
 .item .divider {
 	clear: both;
 	height: 10px;
-	background: bottom url(../imagenes/dash.gif) repeat-x;
+	background: bottom url(../img/dash.gif) repeat-x;
 	margin-bottom: 8px;
 	margin-left: 12px;
 	margin-right: 16px;
@@ -344,7 +344,7 @@ body {
 #banner {
 	height: 121px;
 	margin: 0px 11px;
-	background: #D4D4C5 bottom url(../imagenes/banner.gif) repeat-x;
+	background: #D4D4C5 bottom url(../img/banner.gif) repeat-x;
 }
 #banner-text {
 	color: #474747;

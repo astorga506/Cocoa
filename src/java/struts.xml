@@ -40,6 +40,9 @@
         <action name="listarProductos" method="listar" class="cr.topgadgets.application.action.ListarProductosAction">
             <result name="error">exito.jsp</result>
             <result name="success">buscarProductos.jsp</result>
-        </action>         
+        </action> 
+        <action name="verProducto" class="cr.topgadgets.application.action.VerProductoAction">
+            <result name="input">verProducto.jsp</result>
+        </action>             
     </package>
 </struts>
