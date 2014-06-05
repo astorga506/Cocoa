@@ -54,7 +54,10 @@
                                         </s:url>
                                         <a href="<s:property value="#url"/>" class="details"><s:text name="global.mensaje.detalles"/></a>
                                         <br><br>
-                                        <a href="http://www.freewebsitetemplates.com" class="details"><s:text name="global.mensaje.agregar_carrito"/></a>
+                                        <s:url action="comprarProducto" var="comprar">
+                                            <s:param name="codProducto" value="#productoActual.codProducto"/>
+                                        </s:url>
+                                        <a href="<s:property value="#comprar"/>" class="details"><s:text name="global.mensaje.agregar_carrito"/></a>
                                     </div>
                                     <div class="divider"></div>
                                 </div>

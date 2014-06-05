@@ -39,7 +39,10 @@
                                     <s:label label="Existencias" value="%{producto.cantDisponible}"/><br>
                                     <s:label label="Precio" value="%{producto.precioRegular}"/>                                    
                                     <br>
-                                    <a href="http://www.freewebsitetemplates.com" class="details"><s:text name="global.mensaje.agregar_carrito"/></a>
+                                    <s:url action="comprarProducto" var="comprar">
+                                        <s:param name="codProducto" value="#productoActual.codProducto"/>
+                                    </s:url>
+                                    <a href="<s:property value="#comprar"/>" class="details"><s:text name="global.mensaje.agregar_carrito"/></a>
                                 </div>
                                 <div class="divider"></div>
                             </div>

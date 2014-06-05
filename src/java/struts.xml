@@ -43,6 +43,18 @@
         </action> 
         <action name="verProducto" class="cr.topgadgets.application.action.VerProductoAction">
             <result name="input">verProducto.jsp</result>
+        </action>   
+        <action name="comprarProducto" class="cr.topgadgets.application.action.ComprarAction">
+            <result name="success">carritoCompras.jsp</result>
+            <result name="error">error.jsp</result>
         </action>             
+        <action name="disminuirCantidad" method="disminuir" class="cr.topgadgets.application.action.ComprarAction">
+            <result name="success">carritoCompras.jsp</result>
+            <result name="error">error.jsp</result>
+        </action>   
+        <action name="removerProducto" method="remover" class="cr.topgadgets.application.action.ComprarAction">
+            <result name="success">carritoCompras.jsp</result>
+            <result name="error">error.jsp</result>
+        </action>            
     </package>
 </struts>

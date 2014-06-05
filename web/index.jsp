@@ -44,7 +44,7 @@
                                         <div><s:password name="contrasena" key="global.login.contrasena"/></div>
                                     </div>
                                     <div id="login-button">
-                                        <s:submit type="image" src="imagenes/btn_login.gif"/>                                    
+                                        <s:submit type="image" src="img/btn_login.gif"/>                                    
                                     </div>
                                     <div class="clear">
                                         <div class="reg">
@@ -59,7 +59,7 @@
                                 <div>
                                     <h2><s:text name="global.mensaje.bienvenida"/> <s:property value="#session.user.nombreCliente"/></h2> 
                                     <s:form action="terminarSesion" method="post">
-                                        <s:submit type="image" src="imagenes/btn_login.gif"/>
+                                        <s:submit type="image" src="img/btn_login.gif"/>
                                     </s:form>
                                 </div>
                             </div>
@@ -77,12 +77,15 @@
                                              <s:param name="codProducto" value="#productoActual.codProducto"/>
                                          </s:url>" width="91" height="105" class="left" />  
                                     <h3><s:property value="#productoActual.nombreProducto"/></h3>
-                                    <div><s:url action="verProducto" var="url">
+                                    <div><s:url action="verProducto" var="ver">
                                             <s:param name="codProducto" value="#productoActual.codProducto"/>
                                         </s:url>
-                                        <a href="<s:property value="#url"/>" class="details"><s:text name="global.mensaje.detalles"/></a>
+                                        <a href="<s:property value="#ver"/>" class="details"><s:text name="global.mensaje.detalles"/></a>
                                         <br><br>
-                                                <a href="http://www.freewebsitetemplates.com" class="details"><s:text name="global.mensaje.agregar_carrito"/></a>
+                                                <s:url action="comprarProducto" var="comprar">
+                                                    <s:param name="codProducto" value="#productoActual.codProducto"/>
+                                                </s:url>
+                                                <a href="<s:property value="#comprar"/>" class="details"><s:text name="global.mensaje.agregar_carrito"/></a>
                                                 </div>
                                                 <div class="divider"></div>
                                                 </div>
