@@ -207,9 +207,14 @@ public class ProductoDataTest {
 //            System.out.println(pd.getProductosNom("GTX760").getFirst().getNombreProducto());
 //            System.out.println(pd.getProductosDesc("Tarjeta").getFirst().getNombreProducto());
             
-            for (Producto producto : pd.getLanzamientos()) {
-                System.out.println(producto.getNombreProducto());
+//            for (Producto producto : pd.getLanzamientos()) {
+//                System.out.println(producto.getNombreProducto());
+//            }
+            
+            for (Categoria cat : pd.getCategorias()) {
+                System.out.println(cat.getNombreCategoria());
             }
+            
             
 
         } catch (SQLException ex) {

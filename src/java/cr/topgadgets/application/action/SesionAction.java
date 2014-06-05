@@ -8,8 +8,11 @@ package cr.topgadgets.application.action;
 import com.opensymphony.xwork2.ActionSupport;
 import com.opensymphony.xwork2.Preparable;
 import cr.topgadgets.business.ClienteBusiness;
+import cr.topgadgets.business.ProductoBusiness;
 import cr.topgadgets.domain.Cliente;
+import cr.topgadgets.domain.Producto;
 import java.sql.SQLException;
+import java.util.LinkedList;
 import java.util.Map;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -25,6 +28,7 @@ public class SesionAction extends ActionSupport implements SessionAware, Prepara
     private String contrasena;
     private Cliente cliente;
     private Map<String,Object> map;
+    private LinkedList<Producto> productos;
 
     @Override
     public String execute() throws Exception {
@@ -70,15 +74,24 @@ public class SesionAction extends ActionSupport implements SessionAware, Prepara
         this.contrasena = contrasena;
     }
 
+    public Cliente getCliente() {
+        return cliente;
+    }
+
+    public LinkedList<Producto> getProductos() {
+        return productos;
+    }
+    
     @Override
     public void setSession(Map<String, Object> map) {
         this.map = map;
-    }
+    }    
 
     @Override
     public void prepare() throws Exception {
         cliente = new Cliente();
         map.put("logined", false);
+        productos = new ProductoBusiness().getLanzamientos();        
     }
 
 }

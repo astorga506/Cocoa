@@ -30,18 +30,18 @@ public class ProductoData extends BaseData {
         CallableStatement stmt = con.prepareCall(sqlCall);
 
         stmt.registerOutParameter(1, Types.INTEGER);
-        stmt.setString(2,producto.getNombreProducto());
-        stmt.setString(3,producto.getDescripcionProducto());
-        stmt.setBytes(4,producto.getImagen());
-        stmt.setString(5,producto.getFabricante());
-        stmt.setInt(6,producto.getCategoria().getCodCategoria());
-        stmt.setInt(7,producto.getCantDisponible());
-        stmt.setDouble(8,producto.getPrecioRegular());
-        stmt.setInt(9,producto.getDescuento());
-        stmt.setInt(10,producto.getProveedor().getCodProveedor());
+        stmt.setString(2, producto.getNombreProducto());
+        stmt.setString(3, producto.getDescripcionProducto());
+        stmt.setBytes(4, producto.getImagen());
+        stmt.setString(5, producto.getFabricante());
+        stmt.setInt(6, producto.getCategoria().getCodCategoria());
+        stmt.setInt(7, producto.getCantDisponible());
+        stmt.setDouble(8, producto.getPrecioRegular());
+        stmt.setInt(9, producto.getDescuento());
+        stmt.setInt(10, producto.getProveedor().getCodProveedor());
 
         stmt.execute();
-        
+
         producto.setCodProducto(stmt.getInt(1));
 
         con.close();
@@ -207,7 +207,7 @@ public class ProductoData extends BaseData {
         return productos;
     }
 
-    public Categoria getCategoria(int codCategoria) throws SQLException {
+    private Categoria getCategoria(int codCategoria) throws SQLException {
         Categoria categoria = new Categoria();
         String sqlCall = "{CALL sp_obtener_categoria(?)}";
         Connection con = this.getConnection();
@@ -221,6 +221,23 @@ public class ProductoData extends BaseData {
         }
         con.close();
         return categoria;
+    }
+
+    public LinkedList<Categoria> getCategorias() throws SQLException {
+        LinkedList<Categoria> categorias = new LinkedList<Categoria>();        
+        String sqlCall = "{CALL sp_obtener_categorias}";
+        Connection con = this.getConnection();
+        CallableStatement stmt = con.prepareCall(sqlCall);
+        ResultSet rs = stmt.executeQuery();
+
+        while (rs.next()) {
+            Categoria categoria = new Categoria();
+            categoria.setCodCategoria(rs.getInt("cod_categoria"));
+            categoria.setNombreCategoria(rs.getString("nombre_categoria"));
+            categorias.add(categoria);
+        }
+        con.close();
+        return categorias;
     }
 
     public Proveedor getProveedor(int codProveedor) throws SQLException {

@@ -7,7 +7,7 @@
         <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
         <title><s:text name="global.titulo"/></title>
         <s:url action="registro.action" var="registrar"/>
-        <s:url action="registro.action" var="productos"/>
+        <s:url action="buscarProductos.action" var="productos"/>
         <s:url action="registro.action" var="carrito"/>
         <link rel="stylesheet" href="css/style.css" type="text/css" charset="utf-8" />	
     </head>
@@ -18,10 +18,10 @@
                     <div id="nav-left">
                         <div id="nav-right">
                             <ul>
-                                <li><a href="lista_productos.jsp"><s:text name="global.productos"/></a></li>
+                                <li><a href="<s:property value="#productos"/>"><s:text name="global.productos"/></a></li>
                                 <li><a><s:text name="global.carrito"/></a></li>
                                 <s:if test="%{#session.logined == false}"><li><a href="<s:property value="#registrar"/>"><s:text name="global.registro"/></a></li></s:if>
-                            </ul>
+                                </ul>
                             </div>
                         </div>
                         <div class="clear"></div>
@@ -31,12 +31,12 @@
                         <div id="head-right"></div>
                         <div id="head-1"></div>
                         <h1><span class="logo"><span class="top"><s:text name="global.nombre.top"/></span><span class="gadgets"><s:text name="global.nombre.gadgets"/></span></span></h1>
-                        <div id="navb">
-                            <ul>
-                                <li><a href="http://www.freewebsitetemplates.com"><s:text name="global.inicio"/></a></li>
-                            </ul>
-                        </div>
+                    <div id="navb">
+                        <ul>
+                            <li><a href="http://www.freewebsitetemplates.com"><s:text name="global.inicio"/></a></li>
+                        </ul>
                     </div>
+                </div>
                 <div id="head-2"></div>
                 <div id="login">
                     <div id="login-bot">
@@ -76,34 +76,16 @@
                     <div id="body-bot">
                         <h2><span><strong><s:text name="global.mensaje.lanzamientos"/></strong></span></h2>
                         <div id="items">
-                            <div class="item">
-                                <img src="imagenes/pic_1.jpg" width="91" height="105" alt="laptop" class="left" />
-                                <h3><a href="http://www.justwebtemplates.com">PC y Laptops</a></h3>
-                                <p>Even more websites all about website templates on <a href="http://www.justwebtemplates.com">Just Web Templates</a>.</p>
-                                <div><a href="http://www.freewebsitetemplates.com" class="details">ver</a></div>
-                                <div class="divider"></div>
-                            </div>
-                            <div class="item">
-                                <img src="imagenes/pic_3.jpg" width="91" height="105" alt="phone" class="left" />
-                                <h3><a href="http://www.templatebeauty.com">Smartphones y Tablets</a></h3>
-                                <p>If you're looking for beautiful and professionally made templates you can find them at <a href="http://www.templatebeauty.com">Template Beauty</a>.</p>
-                                <div><a href="http://www.freewebsitetemplates.com" class="details">ver</a></div>
-                                <div class="divider"></div>
-                            </div>
-                            <div class="item">
-                                <img src="imagenes/pic_2.jpg" width="91" height="105" alt="tv" class="left" />
-                                <h3>TVs</h3>
-                                <p>This is a template designed by free website templates for you for free you can replace all the text by your own   			text. </p>
-                                <div><a href="http://www.freewebsitetemplates.com" class="details">ver</a></div>
-                                <div class="divider"></div>
-                            </div>
-                            <div class="item">
-                                <img src="imagenes/pic_4.jpg" width="91" height="105" alt="consola" class="left" />
-                                <h3><a href="http://www.freewebsitetemplates.com/forum/">Consolas</a></h3>
-                                <p>If you're having problems editing the template please don't hesitate to ask for help on the <a href="http://www.freewebsitetemplates.com/forum/">forum</a>.</p>
-                                <div><a href="http://www.freewebsitetemplates.com" class="details">ver</a></div>
-                                <div class="divider"></div>
-                            </div>
+                            <s:iterator value="productos" var="productoActual">
+                                <div class="item">
+                                    <<img src="<s:url action="mostrarImagen">
+                                              <s:param name="codProducto" value="#productoActual.codProducto"/>
+                                          </s:url>" width="91" height="105" class="left" />  
+                                    <h3>Samsung Galaxy S3</h3>
+                                    <div><a href="http://www.freewebsitetemplates.com" class="details">detalles</a><br><br><a href="http://www.freewebsitetemplates.com" class="details">agregar a carrito</a></div>
+                                    <div class="divider"></div>
+                                </div>
+                            </s:iterator>
                             <div class="clear"></div>
                         </div>
                         <div id="footer">

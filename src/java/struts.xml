@@ -6,6 +6,13 @@
     <!--<include file="example.xml"/> -->
     <!-- Configuration for the default package. -->
     <package name="default" extends="struts-default">
+        <result-types>
+            <result-type name="ImagenResult" class="cr.topgadgets.application.action.ImagenResult"></result-type>
+        </result-types>
+        <action name="mostrarImagen" class="cr.topgadgets.application.action.ContenidoAction">
+            <result name="success" type="ImagenResult" />
+            <result name="input" type="ImagenResult" />
+        </action>
         <action name="" class="cr.topgadgets.application.action.SesionAction">
             <result name="input">index.jsp</result>
         </action>        
@@ -25,6 +32,14 @@
         <action name="registrarUsuario" method="registrar" class="cr.topgadgets.application.action.RegistrarAction">
             <result name="success">exito.jsp</result>
             <result name="input">registrarUsuario.jsp</result>
-        </action>        
+        </action>
+        <action name="buscarProductos" class="cr.topgadgets.application.action.ListarProductosAction">
+            <result name="success">exito.jsp</result>
+            <result name="input">buscarProductos.jsp</result>
+        </action>     
+        <action name="listarProductos" method="listar" class="cr.topgadgets.application.action.ListarProductosAction">
+            <result name="error">exito.jsp</result>
+            <result name="success">buscarProductos.jsp</result>
+        </action>         
     </package>
 </struts>
